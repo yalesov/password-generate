@@ -12,9 +12,20 @@
  */
 
 function generate (mode, length) {
-  if (!mode || (mode !== 'mixed' && mode !== 'alphanum' && mode !== 'num')) {
-    mode = 'mixed'
+  switch ((mode || '').charAt(0)) {
+    case 'm':
+      mode = 'mixed'
+      break
+    case 'a':
+      mode = 'alphanum'
+      break
+    case 'n':
+      mode = 'num'
+      break
+    default:
+      mode = 'mixed'
   }
+
   if (!+length) length = 12
   if (length < 2) length = 2
 
