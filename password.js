@@ -12,6 +12,9 @@
  */
 
 function generate (mode, length) {
+
+  /* normalize args */
+
   switch ((mode || '').charAt(0)) {
     case 'm':
       mode = 'mixed'
@@ -28,6 +31,8 @@ function generate (mode, length) {
 
   if (!+length) length = 12
   if (length < 2) length = 2
+
+  /* setup chars pool */
 
   // no Ii Ll Oo 0 1
   let alpha = 'ABCDEFGHJKMNPQRSTUVWXYZabcdefghjkmnpqrstuvwxyz'
@@ -46,6 +51,8 @@ function generate (mode, length) {
       pool = symbol + alpha + num
       break
   }
+
+  /* fill in password places */
 
   let password = {}
 
@@ -69,7 +76,7 @@ function generate (mode, length) {
     fill(password, bit, pos, spots)
   }
 
-  // there is at least a number
+  // ensure at least one num present
   bit = pick(num)
   pos = pick(spots)
   fill(password, bit, pos, spots)
@@ -78,7 +85,7 @@ function generate (mode, length) {
   for (var i in spots) {
     if (!spots[i]) continue
 
-    // disallow adjacent same chars
+    // disallow adjacent same char
     do {
       bit = pick(pool)
     } while (spots[i] !== 0 && bit === password[spots[i] - 1])
@@ -86,6 +93,8 @@ function generate (mode, length) {
     pos = spots[i]
     fill(password, bit, pos, spots)
   }
+
+  /* format password into a string */
 
   let sortedKeys = Object.keys(password).sort(function (a, b) {
     return a - b
@@ -98,6 +107,8 @@ function generate (mode, length) {
 
   return values.join('')
 }
+
+/* helper functions */
 
 function pick (pool) {
   if (typeof pool === 'string') {
@@ -112,7 +123,7 @@ function fill (password, bit, pos, spots) {
   delete spots[pos]
 }
 
-//====================
+/* main */
 
 let mode, length
 
