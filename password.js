@@ -36,9 +36,9 @@ function generate (mode, length) {
   /* setup chars pool */
 
   // no Ii Ll Oo 0 1
-  let alpha = 'ABCDEFGHJKMNPQRSTUVWXYZabcdefghjkmnpqrstuvwxyz'
-  let num = '23456789'
-  let symbol = '_'
+  const alpha = 'ABCDEFGHJKMNPQRSTUVWXYZabcdefghjkmnpqrstuvwxyz'
+  const num = '23456789'
+  const symbol = '_'
 
   let pool
   switch (mode) {
