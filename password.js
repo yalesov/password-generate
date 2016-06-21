@@ -84,7 +84,7 @@ function generate (mode, length) {
 
   // fill remaining
   for (var i in spots) {
-    if (!spots[i]) continue
+    if (typeof spots[i] === 'undefined') continue
 
     // disallow adjacent same char
     do {
@@ -112,10 +112,15 @@ function generate (mode, length) {
 /* helper functions */
 
 function pick (pool) {
+  let draw
   if (typeof pool === 'string') {
-    return pool.charAt(Math.floor(Math.random() * pool.length))
+    draw = Math.ceil(Math.random() * pool.length) - 1
+    if (draw < 0) draw = 0
+    return pool.charAt(draw)
   } else { // object
-    return Math.floor(Math.random() * Object.keys(pool).length)
+    draw = Math.ceil(Math.random() * Object.keys(pool).length) - 1
+    if (draw < 0) draw = 0
+    return pool[draw]
   }
 }
 
