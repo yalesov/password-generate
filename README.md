@@ -17,7 +17,7 @@ Based on actual use cases encountered in the wild.
 ./password.*
 
 mode = m[ixed]|a[lphanum]|n[um] ; default mixed
-length = (integer >= 2) ; default = 12
+length = (integer >= 3) ; default = 12
 ```
 
 ## Notes

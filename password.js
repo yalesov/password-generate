@@ -8,7 +8,7 @@
  * ./password.js
  *
  * mode = m[ixed]|a[lphanum]|n[um] ; default mixed
- * length = (integer >= 2) ; default = 12
+ * length = (integer >= 3) ; default = 12
  */
 
 function generate (mode, length) {
@@ -29,8 +29,9 @@ function generate (mode, length) {
       mode = 'mixed'
   }
 
+  if (!length) length = 3
+  if (+length < 3) length = 3
   if (!+length) length = 12
-  if (length < 2) length = 2
 
   /* setup chars pool */
 
