@@ -2,7 +2,7 @@
   "name": "password-generate",
   "version": "1.0.0",
   "description": "Password generator",
-  "main": "password.js",
+  "main": "lib/password-generate.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -10,7 +10,7 @@
     "password"
   ],
   "files": [
-    "password.js"
+    "lib/password-generate.js"
   ],
   "author": "Yulij Andreevich Lesov <yalesov@gmail.com>",
   "license": "ISC"

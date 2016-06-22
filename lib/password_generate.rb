@@ -2,23 +2,21 @@
 
 ##
 # usage:
-# ./password.rb mode length
-# ./password.rb mode
-# ./password.rb length
-# ./password.rb
+# ./password_generate.rb mode length
+# ./password_generate.rb mode
+# ./password_generate.rb length
+# ./password_generate.rb
 #
 # mode = m[ixed]|a[lphanum]|n[um] ; default mixed
 # length = (integer >= 3) ; default = 12
 #
 # ----- as package -----
-# require 'password'
+# require 'password_generate'
 # p PasswordGenerate.generate mode, length
 # p PasswordGenerate.generate mode
 # p PasswordGenerate.generate length
 # p PasswordGenerate.generate
 ##
-
-# TODO the ruby gem structure is both unexpected and non-standard
 
 class Object
   def is_number?

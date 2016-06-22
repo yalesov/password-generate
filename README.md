@@ -1,4 +1,4 @@
-# password
+# password-generate
 
 Password generators.
 
@@ -13,10 +13,10 @@ Based on actual use cases encountered in the wild.
 ### Naked
 
 ```sh
-./password.* mode length
-./password.* mode
-./password.* length
-./password.*
+lib/* mode length
+lib/* mode
+lib/* length
+lib/*
 
 mode = m[ixed]|a[lphanum]|n[um] ; default mixed
 length = (integer >= 3) ; default = 12
@@ -29,11 +29,11 @@ npm install password-generate
 ```
 
 ```javascript
-let Password = require('password-generate')
-console.log(Password.generate(mode, length))
-console.log(Password.generate(mode))
-console.log(Password.generate(length))
-console.log(Password.generate())
+let PasswordGenerate = require('password-generate')
+console.log(PasswordGenerate.generate(mode, length))
+console.log(PasswordGenerate.generate(mode))
+console.log(PasswordGenerate.generate(length))
+console.log(PasswordGenerate.generate())
 ```
 
 ## Notes
