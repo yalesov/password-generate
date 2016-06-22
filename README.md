@@ -10,6 +10,8 @@ Based on actual use cases encountered in the wild.
 
 ## Usage
 
+### Naked
+
 ```sh
 ./password.* mode length
 ./password.* mode
