@@ -60,7 +60,7 @@ function generate (mode, length) {
   let spots = []
   for (let i = 0; i < length; i++) { spots[i] = i }
 
-  let bit, pos
+  let bit, key, pos
 
   // first select a random non-first place to put a symbol in
   if (mode === 'mixed') {
