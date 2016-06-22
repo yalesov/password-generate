@@ -11,6 +11,13 @@
  * length = (integer >= 3) ; default = 12
  */
 
+/* setup chars pool */
+
+// no Ii Ll Oo 0 1
+const ALPHA = 'ABCDEFGHJKMNPQRSTUVWXYZabcdefghjkmnpqrstuvwxyz'
+const NUM = '23456789'
+const SYMBOL = '_'
+
 function generate (mode, length) {
 
   /* normalize args */
@@ -33,23 +40,16 @@ function generate (mode, length) {
   if (+length < 3) length = 3
   if (!+length) length = 12
 
-  /* setup chars pool */
-
-  // no Ii Ll Oo 0 1
-  const alpha = 'ABCDEFGHJKMNPQRSTUVWXYZabcdefghjkmnpqrstuvwxyz'
-  const num = '23456789'
-  const symbol = '_'
-
   let pool
   switch (mode) {
     case 'num':
-      pool = num
+      pool = NUM
       break
     case 'alphanum':
-      pool = alpha + num
+      pool = ALPHA + NUM
       break
     case 'mixed':
-      pool = symbol + alpha + num
+      pool = SYMBOL + ALPHA + NUM
       break
   }
 
@@ -64,7 +64,7 @@ function generate (mode, length) {
 
   // first select a random non-first place to put a symbol in
   if (mode === 'mixed') {
-    bit = pick(symbol)
+    bit = pick(SYMBOL)
     pos = pick(spots)
     if (pos === 0) pos = 1
     fill(password, bit, pos, spots)
@@ -72,13 +72,13 @@ function generate (mode, length) {
 
   // put first as alpha
   if (mode === 'alphanum' || mode === 'mixed') {
-    bit = pick(alpha)
+    bit = pick(ALPHA)
     pos = 0
     fill(password, bit, pos, spots)
   }
 
   // ensure at least one num present
-  bit = pick(num)
+  bit = pick(NUM)
   pos = pick(spots)
   fill(password, bit, pos, spots)
 
