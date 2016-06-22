@@ -72,14 +72,14 @@ def generate mode, length
   fill password, bit, spots, pos, key
 
   # fill remaining
-  spots.clone.each_with_index do |v, k|
+  spots.each do |v|
     # disallow adjacent same char
     loop do
       bit = pick pool
       break if v == 0 || bit != password[v-1]
     end
 
-    fill password, bit, spots, v, k
+    fill password, bit, spots, v
   end
 
   ## format password into a string
@@ -94,9 +94,9 @@ def pick pool
   v
 end
 
-def fill password, bit, spots, pos, key
+def fill password, bit, spots, pos, key = nil
   password[pos] = bit
-  spots.delete_at key
+  spots.delete_at key unless key == nil
 end
 
 ## main
