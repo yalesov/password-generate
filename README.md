@@ -36,6 +36,20 @@ console.log(PasswordGenerate.generate(length))
 console.log(PasswordGenerate.generate())
 ```
 
+### gem
+
+```sh
+gem install password_generate
+```
+
+```ruby
+require 'password_generate'
+p PasswordGenerate.generate mode, length
+p PasswordGenerate.generate mode
+p PasswordGenerate.generate length
+p PasswordGenerate.generate
+```
+
 ## Notes
 
 ### Symbol
