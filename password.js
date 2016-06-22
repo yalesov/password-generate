@@ -29,7 +29,7 @@ function generate (mode, length) {
 
   /* normalize args */
 
-  switch ((mode || '').charAt(0)) {
+  switch ((''+mode || '').charAt(0)) {
     case 'm':
       mode = 'mixed'
       break
