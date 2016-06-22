@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 default_ext='js'
-default_log='error.log'
+default_log='test.log'
 
 ext=${1-$default_ext}
 log=${2-$default_log}
