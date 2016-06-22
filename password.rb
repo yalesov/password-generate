@@ -48,38 +48,38 @@ def generate mode, length
   ## fill in password places
 
   password = {}
-  spots = (0..length-1).reduce({}) { |r, v| r[v] = v; r }
+  spots = (0..length-1).to_a
 
   # first select a random non-first place to put a symbol in
   if mode == 'mixed'
     bit = pick SYMBOL
-    pos = pick spots
+    key = pick (0..spots.size-1).to_a
+    pos = spots[key]
     pos = 1 if pos == 0
-    fill password, bit, pos, spots
+    fill password, bit, spots, pos, key
   end
 
   # put first as alpha
   if mode == 'alphanum' || mode == 'mixed'
     bit = pick ALPHA
-    pos = 0
-    fill password, bit, pos, spots
+    fill password, bit, spots, 0, 0
   end
 
   # ensure at least one num present
   bit = pick NUM
-  pos = pick spots
-  fill password, bit, pos, spots
+  key = pick (0..spots.size-1).to_a
+  pos = spots[key]
+  fill password, bit, spots, pos, key
 
   # fill remaining
-  spots.each do |k, v|
+  spots.clone.each_with_index do |v, k|
     # disallow adjacent same char
     loop do
       bit = pick pool
       break if v == 0 || bit != password[v-1]
     end
 
-    pos = v
-    fill password, bit, pos, spots
+    fill password, bit, spots, v, k
   end
 
   ## format password into a string
@@ -90,13 +90,13 @@ end
 def pick pool
   v = nil
   v = pool.split('').sample if pool.respond_to? :split
-  v = pool.values.sample if pool.respond_to? :values
+  v = pool.sample if pool.respond_to? :sample
   v
 end
 
-def fill password, bit, pos, spots
+def fill password, bit, spots, pos, key
   password[pos] = bit
-  spots.delete pos
+  spots.delete_at key
 end
 
 ## main
