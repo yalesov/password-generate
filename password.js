@@ -36,9 +36,9 @@ function generate (mode, length) {
       mode = 'mixed'
   }
 
-  if (!length) length = 3
+  if (Number.isNaN(+length) || length === '') length = 12
   if (+length < 3) length = 3
-  if (!+length) length = 12
+  length = +length
 
   let pool
   switch (mode) {
