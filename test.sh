@@ -10,6 +10,6 @@ i=0
 while [ 1 ]; do
   i=$((i+1))
   echo $i
-  count=`./test.js ./password.$ext | tee $log | ag 'failed' | wc -l`
+  count=`./test.js ./password.$ext | tee $log | grep -i 'failed' | wc -l`
   [ $count -gt 0 ] && break
 done
