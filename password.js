@@ -85,7 +85,7 @@ function generate (mode, length) {
 
   // fill remaining
   for (let k = 0; k < spots.length; k++) {
-    let pos = spots[k]
+    pos = spots[k]
     if (typeof pos === 'undefined') continue
 
     // disallow adjacent same char
