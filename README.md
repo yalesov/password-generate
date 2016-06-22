@@ -20,6 +20,20 @@ mode = m[ixed]|a[lphanum]|n[um] ; default mixed
 length = (integer >= 3) ; default = 12
 ```
 
+### npm
+
+```sh
+npm install password-generate
+```
+
+```javascript
+let Password = require('password-generate')
+console.log(Password.generate(mode, length))
+console.log(Password.generate(mode))
+console.log(Password.generate(length))
+console.log(Password.generate())
+```
+
 ## Notes
 
 ### Symbol

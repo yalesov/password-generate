@@ -1,0 +1,17 @@
+{
+  "name": "password-generate",
+  "version": "1.0.0",
+  "description": "Password generator",
+  "main": "password.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "password"
+  ],
+  "files": [
+    "password.js"
+  ],
+  "author": "Yulij Andreevich Lesov <yalesov@gmail.com>",
+  "license": "ISC"
+}

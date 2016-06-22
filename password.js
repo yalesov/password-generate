@@ -9,6 +9,13 @@
  *
  * mode = m[ixed]|a[lphanum]|n[um] ; default mixed
  * length = (integer >= 3) ; default = 12
+ *
+ * ----- as package -----
+ * let Password = require('password-generate')
+ * console.log(Password.generate(mode, length))
+ * console.log(Password.generate(mode))
+ * console.log(Password.generate(length))
+ * console.log(Password.generate())
  */
 
 /* setup chars pool */
@@ -129,19 +136,27 @@ function fill (password, bit, spots, pos, key) {
 
 /* main */
 
-let mode, length
+if (require.main === module) { // run as script
 
-if (process.argv.length > 2) {
-  let arg = process.argv[2]
-  if (+arg) { // this is a number, parse as [length]
-    length = arg
-  } else { // else parse as [mode]
-    mode = arg
+  let mode, length
+
+  if (process.argv.length > 2) {
+    let arg = process.argv[2]
+    if (+arg) { // this is a number, parse as [length]
+      length = arg
+    } else { // else parse as [mode]
+      mode = arg
+    }
+
+    if (process.argv.length > 3) { // parse a possible 2nd [length]
+      length = process.argv[3]
+    }
   }
 
-  if (process.argv.length > 3) { // parse a possible 2nd [length]
-    length = process.argv[3]
-  }
+  console.log(generate(mode, length))
+
+} else { // imported
+
+  module.exports = { generate: generate }
+
 }
-
-console.log(generate(mode, length))
