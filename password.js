@@ -57,7 +57,7 @@ function generate (mode, length) {
 
   let password = {}
 
-  let spots = {}
+  let spots = []
   for (let i = 0; i < length; i++) { spots[i] = i }
 
   let bit, pos
@@ -65,34 +65,35 @@ function generate (mode, length) {
   // first select a random non-first place to put a symbol in
   if (mode === 'mixed') {
     bit = pick(SYMBOL)
-    pos = pick(spots)
+    key = pick(spots)
+    pos = spots[key]
     if (pos === 0) pos = 1
-    fill(password, bit, pos, spots)
+    fill(password, bit, spots, pos, key)
   }
 
   // put first as alpha
   if (mode === 'alphanum' || mode === 'mixed') {
     bit = pick(ALPHA)
-    pos = 0
-    fill(password, bit, pos, spots)
+    fill(password, bit, spots, 0, 0)
   }
 
   // ensure at least one num present
   bit = pick(NUM)
-  pos = pick(spots)
-  fill(password, bit, pos, spots)
+  key = pick(spots)
+  pos = spots[key]
+  fill(password, bit, spots, pos, key)
 
   // fill remaining
-  for (var i in spots) {
-    if (typeof spots[i] === 'undefined') continue
+  for (let k = 0; k < spots.length; k++) {
+    let pos = spots[k]
+    if (typeof pos === 'undefined') continue
 
     // disallow adjacent same char
     do {
       bit = pick(pool)
-    } while (spots[i] !== 0 && bit === password[spots[i] - 1])
+    } while (pos !== 0 && bit === password[pos - 1])
 
-    pos = spots[i]
-    fill(password, bit, pos, spots)
+    fill(password, bit, spots, pos)
   }
 
   /* format password into a string */
@@ -112,21 +113,18 @@ function generate (mode, length) {
 /* helper functions */
 
 function pick (pool) {
-  let draw
+  let draw = Math.ceil(Math.random() * pool.length) - 1
+  if (draw < 0) draw = 0
   if (typeof pool === 'string') {
-    draw = Math.ceil(Math.random() * pool.length) - 1
-    if (draw < 0) draw = 0
     return pool.charAt(draw)
-  } else { // object
-    draw = Math.ceil(Math.random() * Object.keys(pool).length) - 1
-    if (draw < 0) draw = 0
+  } else { // array
     return pool[draw]
   }
 }
 
-function fill (password, bit, pos, spots) {
+function fill (password, bit, spots, pos, key) {
   password[pos] = bit
-  delete spots[pos]
+  if (typeof key !== 'undefined') spots.splice(key, 1)
 }
 
 /* main */
