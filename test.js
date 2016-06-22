@@ -20,16 +20,19 @@ function test (args, run) {
     tests[args].stdout = stdout.trim()
     tests[args].stderr = stderr
 
-    if (code) return fail(args, `[${script} ${args}] Non-zero exit code: ${code}`)
-    if (stderr) return fail(args, `[${script} ${args}] Non-empty stderr: ${stderr}`)
+    if (code || stderr) {
+      if (code) fail(args, `[${script} ${args}] Non-zero exit code: ${code}`)
+      if (stderr) fail(args, `[${script} ${args}] Non-empty stderr: ${stderr}`)
+      done(args)
+      return
+    }
 
     run(suite => {
       for (let i = 0; i < suite.length; i++) {
         suite[i](tests[args].stdout)
       }
 
-      tests[args].completed = true
-      done()
+      done(args)
     }, (desc, result) => {
       if (!result) fail(args, `[${script} ${args}] Test case failed: ${desc}`)
     })
@@ -40,7 +43,9 @@ function fail (args, desc) {
   tests[args].errors.push(desc)
 }
 
-function done() {
+function done (_args) {
+  tests[_args].completed = true
+
   for (let args in tests) {
     if (!tests[args].completed) return
   }
