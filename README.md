@@ -50,6 +50,15 @@ p PasswordGenerate.generate length
 p PasswordGenerate.generate
 ```
 
+### bash
+
+```sh
+./password-generate.sh mode length
+./password-generate.sh mode
+./password-generate.sh length
+./password-generate.sh
+```
+
 ## Notes
 
 ### Symbol
