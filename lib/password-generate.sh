@@ -4,10 +4,10 @@
 
 ##
 # usage:
-# ./password.sh mode length
-# ./password.sh mode
-# ./password.sh length
-# ./password.sh
+# ./password-generate.sh mode length
+# ./password-generate.sh mode
+# ./password-generate.sh length
+# ./password-generate.sh
 #
 # mode = m[ixed]|a[lphanum]|n[um] ; default mixed
 # length = (integer >= 3) ; default = 12
