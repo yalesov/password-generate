@@ -73,6 +73,15 @@ echo password_generate\PasswordGenerate::generate();
 ./password-generate.sh
 ```
 
+### perl
+
+```sh
+./password-generate.pl mode length
+./password-generate.pl mode
+./password-generate.pl length
+./password-generate.pl
+```
+
 ## Notes
 
 ### Symbol
