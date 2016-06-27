@@ -50,6 +50,20 @@ p PasswordGenerate.generate length
 p PasswordGenerate.generate
 ```
 
+### composer
+
+```sh
+composer require password-generate
+```
+
+```ruby
+use password_generate;
+echo password_generate\PasswordGenerate::generate($mode, $length);
+echo password_generate\PasswordGenerate::generate($mode);
+echo password_generate\PasswordGenerate::generate($length);
+echo password_generate\PasswordGenerate::generate();
+```
+
 ### bash
 
 ```sh
