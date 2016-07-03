@@ -12,11 +12,11 @@ namespace password_generate;
  * length = (integer >= 3) ; default = 12
  *
  * ----- as package -----
- * require_once 'password-generate.php';
- * echo \password_generate\PasswordGenerate.generate($mode, $length);
- * echo \password_generate\PasswordGenerate.generate($mode);
- * echo \password_generate\PasswordGenerate.generate($length);
- * echo \password_generate\PasswordGenerate.generate();
+ * use password_generate\PasswordGenerate;
+ * echo PasswordGenerate.generate($mode, $length);
+ * echo PasswordGenerate.generate($mode);
+ * echo PasswordGenerate.generate($length);
+ * echo PasswordGenerate.generate();
  */
 
 class PasswordGenerate {

@@ -53,15 +53,15 @@ p PasswordGenerate.generate
 ### composer
 
 ```sh
-composer require password-generate
+composer require yalesov/password-generate
 ```
 
 ```ruby
-use password_generate;
-echo password_generate\PasswordGenerate::generate($mode, $length);
-echo password_generate\PasswordGenerate::generate($mode);
-echo password_generate\PasswordGenerate::generate($length);
-echo password_generate\PasswordGenerate::generate();
+use password_generate\PasswordGenerate;
+echo PasswordGenerate::generate($mode, $length);
+echo PasswordGenerate::generate($mode);
+echo PasswordGenerate::generate($length);
+echo PasswordGenerate::generate();
 ```
 
 ### bash
