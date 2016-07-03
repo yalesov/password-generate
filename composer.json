@@ -22,8 +22,8 @@
     "issues": "https://github.com/yalesov/password-generate/issues"
   },
   "autoload": {
-    "psr-0": {
-      "password_generate": "lib/"
+    "psr-4": {
+      "password_generate\\": "lib/"
     }
   }
 }
