@@ -11,6 +11,7 @@
   "require": {
     "php": ">=5.3.0"
   },
+  "license": "ISC",
   "homepage": "https://github.com/yalesov/password-generate",
   "repositories": [
     {
