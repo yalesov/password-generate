@@ -11,6 +11,16 @@
   "require": {
     "php": ">=5.3.0"
   },
+  "homepage": "https://github.com/yalesov/password-generate",
+  "repositories": [
+    {
+      "type": "vcs",
+      "url": "https://github.com/yalesov/password-generate"
+    }
+  ],
+  "support": {
+    "issues": "https://github.com/yalesov/password-generate/issues"
+  },
   "autoload": {
     "psr-0": {
       "password_generate": "lib/"
