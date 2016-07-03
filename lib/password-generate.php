@@ -28,7 +28,7 @@ class PasswordGenerate {
   const NUM = '23456789';
   const SYMBOL = '_';
 
-  public static function generate ($mode, $length) {
+  public static function generate ($mode = '', $length = '') {
 
     /* normalize args */
 
