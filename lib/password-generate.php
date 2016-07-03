@@ -127,7 +127,7 @@ class PasswordGenerate {
 
 /* main */
 
-if ($argv && $argv[0] && realpath($argv[0]) === __FILE__) { // run as script
+if (isset($argv) && $argv[0] && realpath($argv[0]) === __FILE__) { // run as script
 
   $mode = '';
   $length = '';
