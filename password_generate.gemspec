@@ -7,5 +7,6 @@ Gem::Specification.new do |gem|
   gem.authors = ['Yulij Andreevich Lesov']
   gem.email = ['yalesov@gmail.com']
   gem.files = ['lib/password_generate.rb']
+  gem.homepage = 'https://github.com/yalesov/password-generate'
   gem.license = 'ISC'
 end
